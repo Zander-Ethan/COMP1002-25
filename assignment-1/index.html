@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<!-- 
+    The HTML Pizza Company - Assignment 1
+    A comprehensive pizza ordering form demonstrating various HTML form elements
+    Author: [Your Name]
+    Date: October 31, 2025
+-->
+<html lang="en">
+<head>
+    <!-- Character encoding set to UTF-8 for proper text display -->
+    <meta charset="UTF-8">
+    
+    <!-- Viewport meta tag for responsive design on mobile devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Page title that appears in browser tab -->
+    <title>The Zander's Pizzaria - Order Your Pizza</title>
+    
+    <!-- Internal CSS styles for page formatting -->
+    <style>
+        /* Base body styles - centers content and sets background */
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        /* Header styling with brand colors */
+        header {
+            background-color: #d32f2f;
+            color: white;
+            padding: 30px;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        
+        /* Main content area with white background and shadow */
+        main {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        /* Footer styling - centered text with lighter color */
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+            margin-top: 30px;
+        }
+        
+        /* Legend styling - titles for each fieldset group */
+        legend {
+            color: #000000;
+            font-weight: bold;
+            font-size: 1.2em;
+            padding: 0 10px;
+        }
+        
+        /* Label styling - makes form labels stand out */
+        label {
+            display: block;
+            margin: 10px 0 5px 0;
+            font-weight: bold;
+        }
+        
+        /* Styling for text-based input fields */
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="number"],
+        input[type="date"],
+        input[type="time"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        
+        /* Spacing for radio buttons and checkboxes */
+        input[type="radio"],
+        input[type="checkbox"] {
+            margin-right: 8px;
+        }
+        
+        /* Container styling for radio button and checkbox groups */
+        .radio-group,
+        .checkbox-group {
+            margin: 10px 0;
+        }
+        
+        /* General form group spacing */
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        /* Button container - centers submit/reset buttons */
+        .button-group {
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        /* Base button styling */
+        button {
+            padding: 12px 30px;
+            font-size: 1.1em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0 10px;
+        }
+        
+        /* Submit button styling with brand color */
+        button[type="submit"] {
+            background-color: #d32f2f;
+            color: white;
+        }
+        
+        /* Submit button hover effect */
+        button[type="submit"]:hover {
+            background-color: #b71c1c;
+        }
+        
+        /* Reset button styling */
+        button[type="reset"] {
+            background-color: #757575;
+            color: white;
+        }
+        
+        /* Reset button hover effect */
+        button[type="reset"]:hover {
+            background-color: #616161;
+        }
+        
+        /* Pizza image container - centers the image */
+        .pizza-image {
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        /* Responsive image styling */
+        .pizza-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- ========================================
+         HEADER SECTION
+         Contains the site branding and title
+         ======================================== -->
+    <header>
+        <h1>🍕 The Zander's Pizzaria </h1>
+        <p>Crafting Delicious Pizzas Since 2015</p>
+    </header>
+
+    <!-- ========================================
+         MAIN CONTENT AREA
+         Contains the pizza ordering form
+         ======================================== -->
+    <main>
+        <h2>Order YOUR Perfect Pizza</h2>
+        
+        <!-- Introduction paragraph with embedded image -->
+        <!-- Image demonstrates use of <img> element with alt attribute -->
+        <p class="pizza-image">
+            <img src="images/Pizza.jpeg"
+                 alt="Delicious pizza with melted cheese, pepperoni, and fresh basil on a wooden board" 
+                 width="600" 
+                 height="400">
+            <!-- NOTE: Replace this URL with a local image file in your project -->
+            <!-- Recommended: Save image as "pizza-hero.jpg" in an /images/ folder -->
+        </p>
+        
+        <!-- Welcome paragraph provides context for the form -->
+        <p>Welcome to The Zander's Pizzaria! We're excited to serve you the best pizza in town. 
+           Fill out the form below to customize YOUR own perfect pizza order. We use only the freshest 
+           ingredients and our dough is made fresh daily!</p>
+
+        <!-- ========================================
+             MAIN ORDER FORM
+             action: Specifies where form data will be sent (PHP script)
+             method: POST is used for sending form data securely
+             ======================================== -->
+        <form action="process-order.php" method="post">
+            
+            <!-- ========================================
+                 CUSTOMER INFORMATION SECTION
+                 Collects basic contact details
+                 ======================================== -->
+            <fieldset>
+                <legend>Customer Information</legend>
+                
+                <!-- Text input for customer's full name -->
+                <!-- required attribute makes this field mandatory -->
+                <label for="customer-name">Full Name: *</label>
+                <input type="text" id="customer-name" name="customer-name" required>
+                
+                <!-- Email input with built-in validation -->
+                <!-- Browser will validate email format automatically -->
+                <label for="customer-email">Email Address: *</label>
+                <input type="email" id="customer-email" name="customer-email" required>
+                
+                <!-- Phone input with pattern validation -->
+                <!-- pattern attribute enforces XXX-XXX-XXXX format -->
+                <label for="customer-phone">Phone Number: *</label>
+                <input type="tel" id="customer-phone" name="customer-phone" 
+                       pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" 
+                       placeholder="123-456-7890" required>
+                
+                <!-- Textarea for multi-line address input -->
+                <!-- rows attribute sets initial height -->
+                <label for="customer-address">Delivery Address:</label>
+                <textarea id="customer-address" name="customer-address" 
+                          rows="3" placeholder="Street, City, Province, Postal Code"></textarea>
+            </fieldset>
+
+            <!-- ========================================
+                 ORDER TYPE SECTION
+                 Determines how customer wants to receive their order
+                 ======================================== -->
+            <fieldset>
+                <legend>Order Type</legend>
+                
+                <!-- Radio buttons for mutually exclusive choices -->
+                <!-- All radio buttons share same 'name' attribute so only one can be selected -->
+                <!-- 'checked' attribute sets default selection -->
+                <div class="radio-group">
+                    <label>
+                        <input type="radio" name="order-type" value="delivery" checked>
+                        Delivery
+                    </label>
+                    <label>
+                        <input type="radio" name="order-type" value="takeout">
+                        Takeout
+                    </label>
+                    <label>
+                        <input type="radio" name="order-type" value="dine-in">
+                        Dine In
+                    </label>
+                </div>
+                
+                <!-- Date and time inputs for scheduling -->
+                <!-- HTML5 inputs provide native date/time pickers -->
+                <div class="form-group">
+                    <label for="delivery-date">Preferred Date:</label>
+                    <input type="date" id="delivery-date" name="delivery-date">
+                    
+                    <label for="delivery-time">Preferred Time:</label>
+                    <input type="time" id="delivery-time" name="delivery-time">
+                </div>
+            </fieldset>
+
+            <!-- ========================================
+                 PIZZA DETAILS SECTION
+                 Core pizza specifications
+                 ======================================== -->
+            <fieldset>
+                <legend>Pizza Details</legend>
+                
+                <!-- Number input with min/max constraints -->
+                <!-- Limits order quantity between 1 and 10 pizzas -->
+                <label for="num-pizzas">Number of Pizzas: *</label>
+                <input type="number" id="num-pizzas" name="num-pizzas" 
+                       min="1" max="10" value="1" required>
+                
+                <!-- Select dropdown with optgroup for organization -->
+                <!-- optgroup elements create visual grouping in dropdown -->
+                <label for="pizza-size">Size: *</label>
+                <select id="pizza-size" name="pizza-size" required>
+                    <option value="">-- Select Size --</option>
+                    <!-- Option group for personal sizes -->
+                    <optgroup label="Personal">
+                        <option value="small-6">Small (6 slices)</option>
+                    </optgroup>
+                    <!-- Option group for sharing sizes -->
+                    <optgroup label="Sharing">
+                        <option value="medium-8">Medium (8 slices)</option>
+                        <option value="large-10">Large (10 slices)</option>
+                        <option value="xlarge-12">Extra Large (12 slices)</option>
+                    </optgroup>
+                    <!-- Option group for party sizes -->
+                    <optgroup label="Party Size">
+                        <option value="party-16">Party Size (16 slices)</option>
+                    </optgroup>
+                </select>
+                
+                <!-- Radio buttons for pizza shape selection -->
+                <label>Pizza Shape:</label>
+                <div class="radio-group">
+                    <label>
+                        <input type="radio" name="pizza-shape" value="round" checked>
+                        Round (Classic)
+                    </label>
+                    <label>
+                        <input type="radio" name="pizza-shape" value="square">
+                        Square (Detroit Style)
+                    </label>
+                </div>
+            </fieldset>
+
+            <!-- ========================================
+                 CRUST TYPE SECTION
+                 Pizza crust options and preferences
+                 ======================================== -->
+            <fieldset>
+                <legend>Crust Type</legend>
+                
+                <!-- Select dropdown for crust types -->
+                <!-- Shows pricing for premium options -->
+                <label for="crust-type">Choose Your Crust: *</label>
+                <select id="crust-type" name="crust-type" required>
+                    <option value="">-- Select Crust --</option>
+                    <option value="thin">Thin & Crispy</option>
+                    <option value="regular">Regular Hand-Tossed</option>
+                    <option value="thick">Thick Crust</option>
+                    <option value="deep-dish">Deep Dish Chicago Style</option>
+                    <option value="stuffed">Stuffed Crust</option>
+                    <option value="gluten-free">Gluten-Free (+$3.00)</option>
+                    <option value="cauliflower">Cauliflower Crust (+$4.00)</option>
+                </select>
+                
+                <!-- Checkboxes for additional crust preferences -->
+                <!-- Checkboxes allow multiple selections (unlike radio buttons) -->
+                <label>Crust Preferences:</label>
+                <div class="checkbox-group">
+                    <label>
+                        <input type="checkbox" name="crust-prefs" value="garlic-butter">
+                        Garlic Butter Brushed
+                    </label>
+                    <label>
+                        <input type="checkbox" name="crust-prefs" value="sesame">
+                        Sesame Seeds on Crust
+                    </label>
+                    <label>
+                        <input type="checkbox" name="crust-prefs" value="parmesan">
+                        Parmesan Cheese on Crust
+                    </label>
+                </div>
+            </fieldset>
+
+            <!-- ========================================
+                 SAUCE AND CHEESE SECTION
+                 Base ingredients for the pizza
+                 ======================================== -->
+            <fieldset>
+                <legend>Sauce & Cheese</legend>
+                
+                <!-- Select dropdown for sauce selection -->
+                <label for="sauce-type">Sauce:</label>
+                <select id="sauce-type" name="sauce-type">
+                    <option value="tomato">Classic Tomato</option>
+                    <option value="marinara">Marinara</option>
+                    <option value="alfredo">Creamy Alfredo</option>
+                    <option value="pesto">Basil Pesto</option>
+                    <option value="bbq">BBQ Sauce</option>
+                    <option value="garlic-oil">Garlic & Olive Oil</option>
+                    <option value="none">No Sauce</option>
+                </select>
+                
+                <!-- Range slider for sauce amount -->
+                <!-- Provides intuitive visual control from light to heavy sauce -->
+                <label for="sauce-amount">Sauce Amount:</label>
+                <input type="range" id="sauce-amount" name="sauce-amount" 
+                       min="0" max="100" value="50">
+                <small>(Light to Extra)</small>
+                
+                <!-- Select dropdown for cheese type -->
+                <label for="cheese-type">Cheese Type:</label>
+                <select id="cheese-type" name="cheese-type">
+                    <option value="mozzarella">Mozzarella</option>
+                    <option value="mixed">Mixed Cheese Blend</option>
+                    <option value="cheddar">Cheddar</option>
+                    <option value="provolone">Provolone</option>
+                    <option value="parmesan">Parmesan</option>
+                    <option value="vegan">Vegan Cheese (+$2.00)</option>
+                    <option value="none">No Cheese</option>
+                </select>
+            </fieldset>
+
+            <!-- ========================================
+                 TOPPINGS SECTION
+                 Extensive topping options organized by category
+                 ======================================== -->
+            <fieldset>
+                <legend>Toppings</legend>
+                
+                <!-- MEAT TOPPINGS SUBSECTION -->
+                <p><strong>Meat Toppings:</strong></p>
+                <div class="checkbox-group">
+                    <!-- Each checkbox allows independent selection -->
+                    <!-- All share same 'name' so they submit as an array -->
+                    <label>
+                        <input type="checkbox" name="toppings" value="pepperoni">
+                        Pepperoni
+                    </label>
+                    <label>
+                        <input type="checkbox" name="toppings" value="italian-sausage">
+                        Italian Sausage
+                    </label>
+                    <label>
+                        <input type="checkbox" name="toppings" value="bacon">
+                        Bacon
+                    </label>
+                    <label>
+                        <input type="checkbox" name="toppings" value="ham">
+                        Ham
+                    </label>
+                    <label>
+                        <input type="checkbox" name="toppings" value="chicken">
+                        Grilled Chicken
+                    </label>
+                    <label>
+                        <input type="checkbox" name="toppings" value="ground-beef">
+                        Ground Beef
+                    </label>
+                    <label>
+                        <input type="checkbox" name="toppings" value="anchovies">
+                        Anchovies
+                    </label>
+                </div>
+                
+                <!-- VEGETABLE TOPPINGS SUBSECTION -->
+                <p><strong>Vegetable Toppings:</strong></p>
+                <div class="checkbox-group">
+                    <label>
+                        <input type="checkbox" name="toppings" value="mushrooms">
+                        Mushrooms
+                    </label>
+                    <label>
+                        <input type="checkbox" name="toppings" value="onions">
+                        Onions
+                    </label>
+                    <label>
+                        <input type="checkbox" name="toppings" value="green-peppers">
+                        Green Peppers
+                    </label>
+                    <label>
+                        <input type="checkbox" name="toppings" value="black-olives">
+                        Black Olives
+                    </label>
+                    <label>
+                        <input type="checkbox" name="toppings" value="tomatoes">
+                        Fresh Tomatoes
+                    </label>
+                    <label>
+                        <input type="checkbox" name="toppings" value="spinach">
+                        Spinach
+                    </label>
+                    <label>
+                        <input type="checkbox" name="toppings" value="jalapenos">
+                        Jalapeños
+                    </label>
+                    <label>
+                        <input type="checkbox" name="toppings" value="pineapple">
+                        Pineapple
+                    </label>
+                    <label>
+                        <input type="checkbox" name="toppings" value="basil">
+                        Fresh Basil
+                    </label>
+                    <label>
+                        <input type="checkbox" name="toppings" value="garlic">
+                        Roasted Garlic
+                    </label>
+                </div>
+                
+                <!-- Color input - demonstrates HTML5 color picker -->
+                <!-- Fun feature that shows browser's native color picker -->
+                <label for="topping-color">Preferred Topping Color Theme:</label>
+                <input type="color" id="topping-color" name="topping-color" value="#ff6347">
+                <small>(Just for fun - helps us visualize your pizza!)</small>
+            </fieldset>
+
+            <!-- ========================================
+                 SPECIAL INSTRUCTIONS SECTION
+                 Additional notes and preferences
+                 ======================================== -->
+            <fieldset>
+                <legend>Special Instructions</legend>
+                
+                <!-- Large textarea for detailed instructions -->
+                <!-- Allows customers to provide dietary restrictions, allergies, etc. -->
+                <label for="special-instructions">Additional Instructions or Dietary Requirements:</label>
+                <textarea id="special-instructions" name="special-instructions" 
+                          rows="5" placeholder="Any special requests? Allergies? Extra cooking instructions?"></textarea>
+                
+                <!-- Additional preference checkboxes -->
+                <label>
+                    <input type="checkbox" name="utensils" value="yes">
+                    Include utensils and napkins
+                </label>
+                
+                <label>
+                    <input type="checkbox" name="contactless" value="yes">
+                    Contactless delivery preferred
+                </label>
+            </fieldset>
+
+            <!-- ========================================
+                 FORM BUTTONS
+                 Submit and reset functionality
+                 ======================================== -->
+            <div class="button-group">
+                <!-- Submit button - sends form data to server -->
+                <!-- type="submit" is default for buttons in forms -->
+                <button type="submit">🍕 Place Order</button>
+                
+                <!-- Reset button - clears all form fields -->
+                <!-- Returns form to initial state -->
+                <button type="reset">🔄 Reset Form</button>
+            </div>
+        </form>
+    </main>
+
+    <!-- ========================================
+         FOOTER SECTION
+         Contains copyright and contact information
+         ======================================== -->
+    <footer>
+        <p>&copy; 2025 The Zander's Pizzaria!. All rights reserved.</p>
+        <p>📞 1-876-1234-734 | 📧 orders@zanderspizzaria.com</p>
+        <p><small>* Required fields</small></p>
+    </footer>
+</body>
+</html>
