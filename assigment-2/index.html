@@ -23,7 +23,6 @@
             font-size: 10px;
             letter-spacing: 3px;
             line-height: 1.5;
-            font-weight: 300;
         }
         
         .cast-name {
@@ -41,11 +40,11 @@
             margin: 30px 0;
         }
         
-        .poster-images img {
+        .poster img {
             max-width: 100%;
             height: auto;
             margin: 15px 0;
-            border: 2px solid rgba(255,255,255,0.2);
+            border: 2px solid rgb(0, 0, 0);
         }
         
         figure {
@@ -64,26 +63,24 @@
             letter-spacing: 5px;
             margin: 25px 0;
             text-transform: uppercase;
-            font-weight: 300;
         }
         
         h1 {
-            font-family: 'Bebas Neue', sans-serif;
+            font-family: Arial, Helvetica, sans-serif;
           font-size: 68px;
             margin: 15px 0;
             letter-spacing: 4px;
             line-height: 1;
         }
         
-        /* mirrored title effect */
-        .title-mirror {
+        /* fading effect for the header */
+        .title-fade {
             display: inline-block;
-            transform: scaleY(-1);
-            opacity: 0.5;
+            opacity: 0.1;
             margin-top: -15px;
         }
         
-        .movie-quote {
+        .quote {
             font-size: 15px;
             font-weight: bold;
             margin: 25px auto;
@@ -95,7 +92,6 @@
             font-size: 11px;
             margin-top: 25px;
             letter-spacing: 3px;
-            font-weight: 300;
         }
         
         article {
@@ -173,11 +169,11 @@
             <p class="tagline">Unlock the Illusion</p>
             
             <h1>NOW YOU SEE ME</h1>
-            <div class="title-mirror">
-                <h1>NOW YOU SEE ME</h1>
+            <div class="title-fade">
+                <h1>NOW YOU DON'T</h1>
             </div>
             
-            <p class="movie-quote">4 amazing magicians. 3 impossible heists.<br>
+            <p class="quote">4 amazing magicians. 3 impossible heists.<br>
             1 billion dollars. This is no illusion.</p>
             
             <p class="director-credit">FROM THE DIRECTOR<br>
@@ -186,7 +182,7 @@
             <p class="release">ONLY IN THEATERS<br>NOVEMBER 14</p>
         </section>
         
-        <section class="poster-images">
+        <section class="poster">
             <figure>
                 <img src="images/actual poster for the movie.webp" alt="Now You See Me main poster with cast on stairs">
                 <figcaption>The Four Horsemen - Masters of Illusion <a href="https://ca.pinterest.com/pin/374502525283421753/" target="_blank">Pinterest</a></figcaption>
